@@ -1,0 +1,54 @@
+{
+  "apps": [
+    {
+      "icon": "tiktok.webp",
+      "title": "TikTok Social",
+      "url": "#"
+    },
+    {
+      "icon": "pubg-mobile.webp",
+      "title": "PUBG MOBILE",
+      "url": "#"
+    },
+    {
+      "icon": "deezer.webp",
+      "title": "Deezer Music",
+      "url": "#"
+    },
+    {
+      "icon": "messenger-facebook.webp",
+      "title": "Messenger Facebook",
+      "url": "#"
+    },
+    {
+      "icon": "sound-cloud.webp",
+      "title": "Sound Cloud",
+      "url": "#"
+    },
+    {
+      "icon": "guns-up.webp",
+      "title": "GUNS UP! Best action test test test",
+      "url": "#"
+    },
+    {
+      "icon": "wild-guns.webp",
+      "title": "Wild Guns Action",
+      "url": "#"
+    },
+    {
+      "icon": "puzzles.webp",
+      "title": "Puzzles",
+      "url": "#"
+    },
+    {
+      "icon": "face-editor.webp",
+      "title": "Face Editor",
+      "url": "#"
+    },
+    {
+      "icon": "drops.webp",
+      "title": "Drops",
+      "url": "#"
+    }
+  ]
+}
