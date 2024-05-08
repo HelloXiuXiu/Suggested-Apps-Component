@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { useValidateImage } from '../hooks/useValidateImage.js'
 import './AppPreview.css'
 

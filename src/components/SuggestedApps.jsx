@@ -15,7 +15,7 @@ function SuggestedApps() {
     fetch(FAKE_REQUEST_URL)
       .then(res => res.json())
       .then(data => setApps(data))
-      .catch(err => console.error("Error"))
+      .catch(err => console.error(err))
   }, [])
 
   useAnimateWithDelay({

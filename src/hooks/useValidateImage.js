@@ -10,7 +10,7 @@ export function useValidateImage(baseUrl, icon) {
         const contentType = res.headers.get('content-type')
         setResult((contentType.startsWith('image')) ? true : false)
       })
-      .catch(err => console.error('Error'))
+      .catch(err => console.error(err))
   },[])
 
   return result
