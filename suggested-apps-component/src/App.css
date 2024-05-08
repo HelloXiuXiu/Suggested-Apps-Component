@@ -1,0 +1,17 @@
+:root {
+  --blue: #2586FE;
+}
+
+body {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.2;
+  font-weight: 400;
+  color: black;
+}
+
+.app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
