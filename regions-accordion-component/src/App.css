@@ -1,5 +1,24 @@
 :root {
-  --blue: #2586FE;
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-info: #64748B;
+  --text-blue: #2586FE;
+  --text-teal: #0D9488;
+  --text-input: #878B94;
+
+  --border-light: #E2E8F0;
+  --border-dark: #94A3B8;
+
+  --background-00: #ffffff;
+  --background-00: #F8FAFC;
+  --background-02: #F1F5F9;
+
+  --icon-light: #94A3B8;
+  --icon-dark: #64748B;
+
+  --decor-line: #CBD5E1;
+
+  --opacity-disabled: 0.3;
 }
 
 body {

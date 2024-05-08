@@ -1,4 +1,4 @@
-# Suggested Apps Component
+# Regions Accordion Component
 
 ![screenshot](suggested-apps-preview.png)
 
@@ -13,7 +13,7 @@ git clone git@github.com:HelloXiuXiu/test-tasks.git
 
 Move to the directory:
 ```
-cd suggested-apps-component
+cd regions-accordion-component
 ```
 
 

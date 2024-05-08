@@ -1,11 +1,11 @@
 import './App.css'
 
-import SuggestedApps from './components/SuggestedApps.jsx'
+import CountriesSection from './components/CountriesSection.jsx'
 
 function App() {
   return (
     <div className="app">
-      <SuggestedApps />
+      <CountriesSection />
     </div>
   )
 }
