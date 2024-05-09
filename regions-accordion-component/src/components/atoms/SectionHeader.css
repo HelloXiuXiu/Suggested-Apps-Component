@@ -1,0 +1,26 @@
+.section-header {
+  padding: 16px var(--side-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background-00);
+}
+
+.close-button-wrap {
+  padding: 4px;
+  cursor: pointer;
+}
+
+.close-button-fill {
+  color: var(--icon-dark);
+}
+
+@media (hover: hover) {
+  .close-button-wrap:hover .close-button-fill {
+    opacity: var(--opacity-hover);
+  }
+}
+
+.close-button-wrap:active .close-button-fill {
+  opacity: var(--opacity-pressed);
+}

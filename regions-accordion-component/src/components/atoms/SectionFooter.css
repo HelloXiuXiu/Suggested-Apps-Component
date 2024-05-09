@@ -1,0 +1,8 @@
+.section-footer {
+  padding: 16px var(--side-padding);
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  background-color: var(--background-01);
+}
+

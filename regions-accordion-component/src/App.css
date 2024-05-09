@@ -1,31 +1,38 @@
 :root {
-  --text-primary: #0F172A;
-  --text-secondary: #334155;
-  --text-info: #64748B;
-  --text-blue: #2586FE;
-  --text-teal: #0D9488;
-  --text-input: #878B94;
+  --color-primary: #0F172A;
+  --color-secondary: #334155;
+  --color-info: #64748B;
+  --color-blue: #2586FE;
+  --color-teal: #0D9488;
+  --color-input: #878B94;
+  --color-decor-line: #CBD5E1;
 
   --border-light: #E2E8F0;
   --border-dark: #94A3B8;
 
   --background-00: #ffffff;
-  --background-00: #F8FAFC;
+  --background-01: #F8FAFC;
   --background-02: #F1F5F9;
 
   --icon-light: #94A3B8;
   --icon-dark: #64748B;
 
-  --decor-line: #CBD5E1;
+  --radius-section: 8px;
+  --radius-button: 4px;
 
   --opacity-disabled: 0.3;
+  --opacity-hover: 0.7;
+  --opacity-pressed: 0.5;
+
+  --side-padding: 24px;
 }
 
 body {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Roboto, sans-serif;
   line-height: 1.2;
-  font-weight: 400;
-  color: black;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-primary);
 }
 
 .app {
