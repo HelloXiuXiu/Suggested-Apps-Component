@@ -1,12 +1,2 @@
-.countries-section-wrap {
-  width: 1000px;
-  margin: 40px;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-section);
-  overflow: hidden;
-}
 
-.countries-section-header {
-  padding: 16px 16px 16px 24px;
-}
 

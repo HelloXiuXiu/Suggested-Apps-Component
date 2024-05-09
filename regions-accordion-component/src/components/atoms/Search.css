@@ -1,3 +1,30 @@
 .search {
-  
+  padding: 8px var(--side-padding);
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  background-color: var(--background-00);
+  gap: 8px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.search-icon {
+  color: var(--icon-light);
+}
+
+.search-input {
+  color: var(--color-input);
+  border: none;
+}
+
+.search-input::placeholder {
+  color: var(--color-input);
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.search-input:focus::placeholder {
+  opacity: 0;
 }
