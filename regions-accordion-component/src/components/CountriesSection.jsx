@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 
-import Accordion from './atoms/Accordion.jsx'
-import Arrow from './atoms/Arrow.jsx'
 import Button from './atoms/Button.jsx'
 import Loader from './atoms/Loader.jsx'
 import Search from './atoms/Search.jsx'
@@ -12,6 +10,13 @@ import SectionBodyRight from './atoms/SectionBodyRight.jsx'
 import SectionFooter from './atoms/SectionFooter.jsx'
 import SectionHeader from './atoms/SectionHeader.jsx'
 import SectionInfo from './atoms/SectionInfo.jsx'
+
+import CountriesAccordion from './countries-accordion/CountriesAccordion.jsx'
+import Continent from './countries-accordion/Continent.jsx'
+import Country from './countries-accordion/Country.jsx'
+import CountryWrap from './countries-accordion/CountryWrap.jsx'
+import Region from './countries-accordion/Region.jsx'
+import RegionWrap from './countries-accordion/RegionWrap.jsx'
 
 // runs with json-server
 const FAKE_REQUEST_URL = 'http://localhost:8000/continents'
@@ -25,10 +30,10 @@ function getFlag(countryCode) {
 
 function toggleAccardion(e) {
   e.stopPropagation()
+
   const continent = e.target.closest('.continent')
   const country = e.target.closest('.country')
-
-  if (country && continent) return
+  if (!country && !continent) return
 
   const currentTarget = (country || continent)
   currentTarget.classList.toggle('open')
@@ -62,41 +67,31 @@ function CountriesSection() {
           <Search />
           {isLoading ?
             <Loader /> :
-            <Accordion>
+            <CountriesAccordion>
               {continents.map(continent => (
-                <li className="continent-item" key={continent.uniq_id}>
-                  <div className="continent" onClick={toggleAccardion}>
-                    <Arrow />
-                    <div className="continent-title">{continent.continent_name}</div>
-                    <span className="hint">Continent</span>
-                  </div>
-                  <ul className="countries">
+                <Continent
+                  toggleAccardion={toggleAccardion}
+                  name={continent.continent_name}
+                  key={continent.uniq_id}>
+                  <CountryWrap>
                     {continent.countries.map(country => (
-                      <li className="country-item" key={country.uniq_id}>
-                        <div className="country" onClick={toggleAccardion}>
-                          <Arrow />
-                          <div className="country-title">
-                            <span className="country-flag">{getFlag(country.country_code)}</span> 
-                            {country.country_name} - {country.country_code}
-                          </div>
-                          <span className="hint">Country</span>
-                        </div>
-                        <ul className="regions">
+                      <Country
+                        toggleAccardion={toggleAccardion}
+                        flag={getFlag(country.country_code)}
+                        name={country.country_name}
+                        code={country.country_code}
+                        key={country.uniq_id}>
+                        <RegionWrap>
                           {country.regions.map(region => (
-                            <li className="region-item" key={region.uniq_id}>
-                              <div className="region">
-                                <div className="region-title">{region.region_name}</div>
-                                <span className="hint">Region</span>
-                              </div>
-                            </li>
+                            <Region name={region.region_name} key={region.uniq_id}/>
                           ))}
-                        </ul>
-                      </li>
+                        </RegionWrap>
+                      </Country>
                     ))}
-                  </ul>
-                </li>
+                  </CountryWrap>
+                </Continent>
               ))}
-            </Accordion>
+            </CountriesAccordion>
           }
         </SectionBodyLeft>
         <SectionBodyRight />
