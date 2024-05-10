@@ -20,6 +20,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 }
 
 .continent-title,
@@ -29,7 +30,6 @@
   color: var(--color-primary-gray700);
   font-size: 14px;
   user-select: none;
-  cursor: pointer;
 }
 
 .continent-title {
@@ -39,11 +39,12 @@
 .country-title,
 .region-title {
   font-weight: 400;
+  cursor: pointer;
 }
 
 .country-title:hover,
 .region-title:hover {
-  opacity: var(--opacity-hover);
+  color: var(--color-primary-gray900);
 }
 
 .country-flag {
@@ -77,4 +78,11 @@
 
 .country.open + .regions {
   display: block;
+}
+
+.accordion-checkbox {
+  display: inline-block;
+  margin-right: 8px;
+  transform: translateY(1px);
+  cursor: pointer;
 }

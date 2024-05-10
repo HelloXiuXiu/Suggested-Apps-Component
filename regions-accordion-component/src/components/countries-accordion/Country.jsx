@@ -6,6 +6,7 @@ function Country({ toggleAccardion, flag, name, code, children }) {
       <div className="country" onClick={toggleAccardion}>
         <Arrow />
         <div className="country-title">
+          <input className="accordion-checkbox" type="checkbox" />
           <span className="country-flag">{flag}</span> 
           {name} - {code}
         </div>

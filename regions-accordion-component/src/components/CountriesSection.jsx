@@ -30,6 +30,7 @@ function getFlag(countryCode) {
 
 function toggleAccardion(e) {
   e.stopPropagation()
+  if (e.target.tagName === 'INPUT') return
 
   const continent = e.target.closest('.continent')
   const country = e.target.closest('.country')
