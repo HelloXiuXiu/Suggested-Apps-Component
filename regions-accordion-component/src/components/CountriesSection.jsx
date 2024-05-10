@@ -1,22 +1,43 @@
 import { useState, useEffect } from 'react'
-import CountriesAccordion from './CountriesAccordion.jsx'
 
-import Section from './atoms/Section.jsx'
+import Accordion from './atoms/Accordion.jsx'
+import Arrow from './atoms/Arrow.jsx'
 import Button from './atoms/Button.jsx'
-import SectionHeader from './atoms/SectionHeader.jsx'
-import SectionFooter from './atoms/SectionFooter.jsx'
-import SectionInfo from './atoms/SectionInfo.jsx'
+import Loader from './atoms/Loader.jsx'
 import Search from './atoms/Search.jsx'
+import Section from './atoms/Section.jsx'
 import SectionBody from './atoms/SectionBody.jsx'
 import SectionBodyLeft from './atoms/SectionBodyLeft.jsx'
 import SectionBodyRight from './atoms/SectionBodyRight.jsx'
-import Arrow from './atoms/Arrow.jsx'
-import Loader from './atoms/Loader.jsx'
-
-import './CountriesSection.css'
+import SectionFooter from './atoms/SectionFooter.jsx'
+import SectionHeader from './atoms/SectionHeader.jsx'
+import SectionInfo from './atoms/SectionInfo.jsx'
 
 // runs with json-server
 const FAKE_REQUEST_URL = 'http://localhost:8000/continents'
+
+function getFlag(countryCode) {
+  const codePoints = countryCode
+    .split('')
+    .map((char) => 127397 + char.charCodeAt())
+  return (String.fromCodePoint(...codePoints) || '🏳️')
+}
+
+function toggleAccardion(e) {
+  e.stopPropagation()
+  const continent = e.target.closest('.continent')
+  const country = e.target.closest('.country')
+
+  if (country && continent) return
+
+  const currentTarget = (country || continent)
+  currentTarget.classList.toggle('open')
+
+  if (continent) {
+    const countries = Array.from(continent.nextElementSibling.querySelectorAll('.country'))
+    if (countries) countries.forEach(el => el.classList.remove('open'))
+  }
+}
 
 function CountriesSection() {
   const [continents, setContinents] = useState([])
@@ -26,7 +47,6 @@ function CountriesSection() {
     fetch(FAKE_REQUEST_URL)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         setContinents(data)
         setIsLoading(false)
       })
@@ -42,7 +62,7 @@ function CountriesSection() {
           <Search />
           {isLoading ?
             <Loader /> :
-            <CountriesAccordion>
+            <Accordion>
               {continents.map(continent => (
                 <li className="continent-item" key={continent.uniq_id}>
                   <div className="continent" onClick={toggleAccardion}>
@@ -70,13 +90,13 @@ function CountriesSection() {
                               </div>
                             </li>
                           ))}
-                          </ul>
+                        </ul>
                       </li>
                     ))}
                   </ul>
                 </li>
               ))}
-            </CountriesAccordion>
+            </Accordion>
           }
         </SectionBodyLeft>
         <SectionBodyRight />
@@ -87,30 +107,6 @@ function CountriesSection() {
       </SectionFooter>
     </Section>
   )
-}
-
-function getFlag(countryCode) {
-  const codePoints = countryCode
-    .split('')
-    .map((char) => 127397 + char.charCodeAt())
-
-  return (String.fromCodePoint(...codePoints) || '')
-}
-
-function toggleAccardion(e) {
-  e.stopPropagation()
-  const continent = e.target.closest('.continent')
-  const country = e.target.closest('.country')
-
-  if (country && continent) return
-
-  const currentTarget = (country || continent)
-  currentTarget.classList.toggle('open')
-
-  if (continent) {
-    const countries = Array.from(continent.nextElementSibling.querySelectorAll('.country'))
-    if (countries) countries.forEach(el => el.classList.remove('open'))
-  }
 }
 
 export default CountriesSection

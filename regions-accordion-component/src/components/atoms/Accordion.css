@@ -1,6 +1,9 @@
 .accordion {
-  padding: 8px var(--side-padding);
+  padding: 8px 16px 8px var(--side-padding);
+  margin-right: 4px;
   overflow: auto;
+  scrollbar-color: var(--color-primary-gray300) transparent;
+  scrollbar-width: thin;
 }
 
 .continent-item,

@@ -1,6 +1,6 @@
 import './Button.css'
 
-function Button({ isAccent = false, isDisabled = false, clickHandler, children }) {
+function Button({ isAccent = false, isDisabled = false, clickHandler = null, children = ''}) {
   return (
     <div
       onClick={clickHandler}

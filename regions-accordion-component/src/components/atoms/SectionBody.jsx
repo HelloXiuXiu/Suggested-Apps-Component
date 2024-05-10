@@ -1,6 +1,6 @@
 import './SectionBody.css'
 
-function SectionBody({ children }) {
+function SectionBody({ children = ''}) {
   return (
     <div className="section-body">{children}</div>
   )

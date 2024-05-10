@@ -1,6 +1,6 @@
 import './SectionInfo.css'
 
-function SectionInfo({ children }) {
+function SectionInfo({ children = ''}) {
   return (
     <div className="section-info">
       <div className="info-icon">i</div>

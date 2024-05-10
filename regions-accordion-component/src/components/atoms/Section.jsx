@@ -1,9 +1,9 @@
 import './Section.css'
 
-function Section({ children }) {
+function Section({ children = ''}) {
   return (
     <div className="section-wrap">
-      { children }
+      {children}
     </div>
   )
 }
