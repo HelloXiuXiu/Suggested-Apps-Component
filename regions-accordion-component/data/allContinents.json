@@ -1,4 +1,6 @@
-[
+{
+  "continents":
+  [
     {
       "uniq_id": "AF___",
       "type": "continent",
@@ -37949,3 +37951,4 @@
       ]
     }
   ]
+}

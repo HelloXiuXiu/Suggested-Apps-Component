@@ -1,0 +1,11 @@
+.open .arrow {
+  transform: rotate(90deg);
+}
+
+.arrow-body {
+  color: var(--color-primary-gray400);
+}
+
+.open .arrow-body {
+  color: var(--color-primary-blue);
+}

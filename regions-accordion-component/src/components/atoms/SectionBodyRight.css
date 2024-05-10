@@ -1,20 +1,21 @@
 .section-body-right {
-  background-color: var(--background-01);
+  background-color: var(--color-primary-gray000);
   display: flex;
   flex-direction: column;
 }
 
 .countries-subheading {
   color: var(--color-teal);
+  font-size: 14px;
   min-height: 48px;
   padding: 8px 16px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--color-primary-gray300);
 }
 
 .section-body-content {
-  background-color: var(--background-01);
+  background-color: var(--color-primary-gray100);
 }
 
 .no-select {
@@ -23,4 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--color-primary-gray500);
+  font-size: 12px;
+  font-weight: 400;
 }

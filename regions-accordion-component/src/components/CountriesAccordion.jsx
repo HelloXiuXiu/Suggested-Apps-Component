@@ -2,15 +2,11 @@ import { useState, useEffect } from 'react'
 
 import './CountriesAccordion.css'
 
-function CountriesAccordion({ allCountries }) {
-  useEffect(() => {
-    console.log(allCountries)
-  }, [])
-
+function CountriesAccordion({ children }) {
   return (
-    <div className="countries-accordion-wrap">
-      Countries
-    </div>
+    <ul className="accordion">
+      {children}
+    </ul>
   )
 }
 

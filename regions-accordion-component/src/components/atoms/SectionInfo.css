@@ -1,6 +1,6 @@
 .section-info {
-  background-color: var(--background-01);
-  color: var(--color-info);
+  background-color: var(--color-primary-gray000);
+  color: var(--color-primary-gray500);
   padding: 8px var(--side-padding);
   font-size: 12px;
   font-weight: 400;
@@ -13,8 +13,8 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: var(--icon-light);
-  color: var(--background-00);
+  background-color: var(--color-primary-gray400);
+  color: var(--color-white);
   justify-content: center;
   align-items: center;
   font-weight: 600;

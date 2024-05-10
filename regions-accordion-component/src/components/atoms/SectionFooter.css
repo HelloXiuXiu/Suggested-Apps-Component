@@ -3,6 +3,5 @@
   display: flex;
   justify-content: flex-end;
   gap: 16px;
-  background-color: var(--background-01);
+  background-color: var(--color-primary-gray000);
 }
-

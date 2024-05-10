@@ -1,28 +1,23 @@
 :root {
-  --color-primary: #0F172A;
-  --color-secondary: #334155;
-  --color-info: #64748B;
-  --color-blue: #2586FE;
+  --color-primary-gray900: #0F172A;
+  --color-primary-gray700: #334155;
+  --color-primary-gray500: #64748B;
+  --color-primary-gray400: #94A3B8;
+  --color-primary-gray300: #CBD5E1;
+  --color-primary-gray200: #E2E8F0;
+  --color-primary-gray100: #F1F5F9;
+  --color-primary-gray000: #F8FAFC;
+
+  --color-primary-blue: #2586FE;
   --color-teal: #0D9488;
-  --color-input: #878B94;
-  --color-decor-line: #CBD5E1;
-
-  --border-light: #E2E8F0;
-  --checkbox: #94A3B8;
-
-  --background-00: #ffffff;
-  --background-01: #F8FAFC;
-  --background-02: #F1F5F9;
-
-  --icon-light: #94A3B8;
-  --icon-dark: #64748B;
-
-  --radius-section: 8px;
-  --radius-button: 4px;
+  --color-white: #ffffff;
 
   --opacity-disabled: 0.3;
   --opacity-hover: 0.7;
   --opacity-pressed: 0.5;
+
+  --radius-section: 8px;
+  --radius-button: 4px;
 
   --side-padding: 24px;
 }
@@ -32,7 +27,7 @@ body {
   line-height: 1.2;
   font-weight: 600;
   font-size: 14px;
-  color: var(--color-primary);
+  color: var(--color-primary-gray900);
 }
 
 .app {
