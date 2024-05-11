@@ -1,6 +1,6 @@
 # Regions Accordion Component
 
-![screenshot](suggested-apps-preview.png)
+![screenshot](preview-image.png)
 
 Component build with React + Vite.
 
