@@ -156,8 +156,9 @@ function CountriesSection() {
           }
         </SectionBodyLeft>
         <SectionBodyRight>
-          <Included includedCountries={includedCountries} />
-          <Excluded excludedRegions={excludedRegions} />
+          {includedCountries.size > 0 && <Included includedCountries={includedCountries} />}
+          {excludedRegions.size  > 0 && <Excluded excludedRegions={excludedRegions} />}
+          {!includedCountries.size && <div className="section-body-content no-select">Nothing Selected</div>}
         </SectionBodyRight>
       </SectionBody>
       <SectionFooter>
