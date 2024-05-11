@@ -13,18 +13,3 @@
   align-items: center;
   border-bottom: 1px solid var(--color-primary-gray300);
 }
-
-.section-body-content {
-  background-color: var(--color-primary-gray100);
-}
-
-.no-select {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--color-primary-gray500);
-  font-size: 12px;
-  font-weight: 400;
-}

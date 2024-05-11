@@ -1,12 +1,12 @@
 import Arrow from '../atoms/Arrow.jsx'
 
-function Country({ onHandleCountryCheckbox, onToggleAccardion, flag, name, code, children }) {
+function Country({ onHandleCountryCheckbox, onToggleAccardion, isSelected, flag, name, code, children }) {
   return (
     <li className="country-item">
       <div className="country" onClick={onToggleAccardion}>
         <Arrow />
         <div className="country-title">
-          <input className="accordion-checkbox" type="checkbox" onChange={onHandleCountryCheckbox}/>
+          <input className="accordion-checkbox" checked={isSelected} type="checkbox" onChange={onHandleCountryCheckbox}/>
           <span className="country-flag">{flag}</span> 
           {name} - {code}
         </div>
