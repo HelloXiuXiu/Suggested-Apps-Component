@@ -1,9 +1,9 @@
 import Arrow from '../atoms/Arrow.jsx'
 
-function Continent({ toggleAccardion, name, children }) {
+function Continent({ onToggleAccardion, name, children }) {
   return (
     <li className="continent-item">
-      <div className="continent" onClick={toggleAccardion}>
+      <div className="continent" onClick={onToggleAccardion}>
         <Arrow />
         <div className="continent-title">{name}</div>
         <span className="hint">Continent</span>

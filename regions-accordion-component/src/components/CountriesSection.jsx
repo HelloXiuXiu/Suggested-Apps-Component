@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 
 import Button from './atoms/Button.jsx'
+import Excluded from './atoms/Excluded.jsx'
+import Included from './atoms/Included.jsx'
 import Loader from './atoms/Loader.jsx'
 import Search from './atoms/Search.jsx'
 import Section from './atoms/Section.jsx'
@@ -41,12 +43,14 @@ function toggleAccardion(e) {
 
   if (continent) {
     const countries = Array.from(continent.nextElementSibling.querySelectorAll('.country'))
-    if (countries) countries.forEach(el => el.classList.remove('open'))
+    if (countries.length > 0) countries.forEach(el => el.classList.remove('open'))
   }
 }
 
 function CountriesSection() {
   const [continents, setContinents] = useState([])
+  const [includedCountries, setIncludedCountries] = useState(new Map())
+  const [excludedRegions, setExcludedRegions] = useState(new Map())
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -58,6 +62,54 @@ function CountriesSection() {
       })
       .catch(err => console.log(err))
   }, [])
+
+  function handleCountryCheckbox(e, countryObject) {
+    e.stopPropagation()
+
+    const updatedIncluded = new Map(includedCountries)
+    const updatedExcluded = new Map(excludedRegions)
+
+    if (e.target.checked) {
+      updatedIncluded.set(countryObject.uniq_id, countryObject.country_name)
+    } else {
+      updatedIncluded.delete(countryObject.uniq_id)
+      countryObject.regions.forEach(region => updatedExcluded.delete(region.uniq_id))
+    }
+
+    setIncludedCountries(updatedIncluded)
+    setExcludedRegions(updatedExcluded)
+
+    // change to state={excludedRegions.has(region.uniq_id)}
+    const regions = Array.from(e.target.closest('.country-item').querySelectorAll('.region'))
+    if (regions.length > 0) {
+      regions.forEach(region => region.querySelector('input').checked = e.target.checked)
+    }
+  }
+
+  function handleRegionCheckbox(e, countryObject, regionObject) {
+    e.stopPropagation()
+
+    const updatedIncluded = new Map(includedCountries)
+    const updatedExcluded = new Map(excludedRegions)
+    
+    if (includedCountries.has(countryObject.uniq_id)) {
+      if (e.target.checked) {
+        updatedExcluded.delete(regionObject.uniq_id)
+      } else {
+        updatedExcluded.set(regionObject.uniq_id, `${regionObject.region_name} (${countryObject.country_name})`)
+      }
+    } else {
+      updatedIncluded.set(countryObject.uniq_id, countryObject.country_name)
+      countryObject.regions.forEach(region => {
+        if (!excludedRegions.has(region.uniq_id) && region.uniq_id !== regionObject.uniq_id) {
+          updatedExcluded.set(region.uniq_id, `${region.region_name} (${countryObject.country_name})`)
+        }
+      })
+    }
+
+    setIncludedCountries(updatedIncluded)
+    setExcludedRegions(updatedExcluded)
+  }
 
   return (
     <Section>
@@ -71,31 +123,42 @@ function CountriesSection() {
             <CountriesAccordion>
               {continents.map(continent => (
                 <Continent
-                  toggleAccardion={toggleAccardion}
+                  onToggleAccardion={toggleAccardion}
                   name={continent.continent_name}
                   key={continent.uniq_id}>
                   <CountryWrap>
-                    {continent.countries.map(country => (
-                      <Country
-                        toggleAccardion={toggleAccardion}
-                        flag={getFlag(country.country_code)}
-                        name={country.country_name}
-                        code={country.country_code}
-                        key={country.uniq_id}>
-                        <RegionWrap>
-                          {country.regions.map(region => (
-                            <Region name={region.region_name} key={region.uniq_id}/>
-                          ))}
-                        </RegionWrap>
-                      </Country>
-                    ))}
+                    {continent.countries.map(country => {
+                      return (
+                        <Country
+                          onHandleCountryCheckbox={(e) => handleCountryCheckbox(e, country)}
+                          onToggleAccardion={toggleAccardion}
+                          flag={getFlag(country.country_code)}
+                          name={country.country_name}
+                          code={country.country_code}
+                          key={country.uniq_id}>
+                          <RegionWrap>
+                            {country.regions.map(region => {
+                              return (
+                                <Region
+                                  onHandleRegionCheckbox={(e) => handleRegionCheckbox(e, country, region)}
+                                  name={region.region_name}
+                                  key={region.uniq_id}/>
+                              )}
+                            )}
+                          </RegionWrap>
+                        </Country>
+                      )}
+                    )}
                   </CountryWrap>
                 </Continent>
               ))}
             </CountriesAccordion>
           }
         </SectionBodyLeft>
-        <SectionBodyRight />
+        <SectionBodyRight>
+          <Included includedCountries={includedCountries} />
+          <Excluded excludedRegions={excludedRegions} />
+        </SectionBodyRight>
       </SectionBody>
       <SectionFooter>
         <Button isAccent={false} isDisabled={false} clickHandler={null}>Cancel</Button>

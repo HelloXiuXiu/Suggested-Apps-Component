@@ -83,6 +83,8 @@
 .accordion-checkbox {
   display: inline-block;
   margin-right: 8px;
-  transform: translateY(1px);
+  transform: translateY(3px);
   cursor: pointer;
+  width: 16px;
+  height: 16px;
 }

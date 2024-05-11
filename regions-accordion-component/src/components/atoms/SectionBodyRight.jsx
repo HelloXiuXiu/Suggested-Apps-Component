@@ -1,9 +1,9 @@
 import './SectionBodyRight.css'
 
-function SectionBodyRight() {
+function SectionBodyRight({ children }) {
   return (
     <div className="section-body-right">
-      <h3 className="countries-subheading">Include:</h3>
+      { children }
       <div className="section-body-content no-select">Nothing Selected</div>
     </div>
   )
