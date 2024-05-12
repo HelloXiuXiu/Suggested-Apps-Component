@@ -86,20 +86,27 @@ function CountriesSection() {
 
     const newIncluded = new Map(includedCountries)
     const newExcluded = new Map(excludedRegions)
+    let isLastRegion = true
 
     if (includedCountries.has(countryObj.uniq_id)) {
       if (e.target.checked) {
         newExcluded.delete(regionObj.uniq_id)
       } else {
         newExcluded.set(regionObj.uniq_id, `${regionObj.region_name} (${countryObj.country_name})`)
+        countryObj.regions.forEach(region => {
+          if (!newExcluded.has(region.uniq_id)) isLastRegion = false
+        })
+        // handle case where there is no region left selected
+        if (isLastRegion) {
+          countryObj.regions.forEach(region => {
+            newExcluded.delete(region.uniq_id)
+          })
+          newIncluded.delete(countryObj.uniq_id)
+        }
       }
     } else {
       if (e.target.checked) {
         newIncluded.set(countryObj.uniq_id, countryObj.country_name)
-      } else {
-        // TODO uninclude country if other regions are all excluded)
-        // check is any of regions are "checked"
-        let isNoRegions = false
       }
 
       countryObj.regions.forEach(region => {
